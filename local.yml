@@ -5,7 +5,11 @@
 
 
   tasks: 
-  - name: install htop
+  - name: install base packages
     package: 
-      name: htop
-    
+      name: 
+        - htop
+        - tmux
+        - neovim
+        - terminator
+        - neofetch
