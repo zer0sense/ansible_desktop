@@ -1,4 +1,4 @@
-#added via ansible
+#added via asible
 # General
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes

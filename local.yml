@@ -15,14 +15,38 @@
         - neovim
         - terminator
         - neofetch
-        - pip3
-        - python3
-        - python3-psutil
         - zsh
 
   - name: copy alias file
-    copy: 
+    copy:
       src: files/alias
-      dest: ~
-      owner: "{{ user }}"
-      group: "{{ user }}"
+      dest: /home/kalifornia909/.alias
+      owner: kalifornia909
+      group: kalifornia909
+
+  - name: copy bash file
+    copy:
+      src: files/bash
+      dest: /home/kalifornia909/.bashrc
+      owner: kalifornia909
+      group: kalifornia909
+
+  - name: copy zsh file
+    copy:
+      src: files/zsh
+      dest: /home/kalifornia909/.zshrc
+      owner: kalifornia909
+      group: kalifornia909
+
+  - name: ohmyzsh
+    become_user: kalifornia909
+    git:
+      clone: yes
+      repo: https://github.com/ohmyzsh/ohmyzsh.git
+      dest: /home/kalifornia909/git/ohmyzsh
+
+  - name: install ohmyzsh
+    shell:
+      chdir: /home/kalifornia909/git/ohmyzsh/tools
+      executable: /home/kalifornia909/git/ohmyzsh/tools/install.sh
+      cmd: install.sh
