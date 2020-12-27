@@ -22,5 +22,5 @@
     copy: 
       src: files/alias
       dest: "{{home}}/.alias"
-      owner: {{user}}
-      group: {{group}}
+      owner: "{{user}}"
+      group: "{{group}}"
