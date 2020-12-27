@@ -38,15 +38,38 @@
       owner: kalifornia909
       group: kalifornia909
 
-  - name: ohmyzsh
+  - name: ohmyzsh Copy
     become_user: kalifornia909
     git:
       clone: yes
       repo: https://github.com/ohmyzsh/ohmyzsh.git
       dest: /home/kalifornia909/git/ohmyzsh
+      update: yes
 
   - name: install ohmyzsh
     shell:
       chdir: /home/kalifornia909/git/ohmyzsh/tools
       executable: /home/kalifornia909/git/ohmyzsh/tools/install.sh
       cmd: install.sh
+
+  - name: powerlevel10k
+    become_user: kalifornia909
+    git:
+      clone: yes
+      repo: https://github.com/romkatv/powerlevel10k.git
+      dest: /home/kalifornia909/.oh-my-zsh/custom/themes/powerlevel10k
+      update: yes
+  
+  - name: nerd-fonts
+    become_user: kalifornia909
+    git:
+      clone: yes
+      repo: https://github.com/ryanoasis/nerd-fonts.git
+      dest: /home/kalifornia909/git/nerd-fonts
+
+  - name: install nerd nerd-fonts
+    shell:
+      chdir: /home/kalifornia909/git/nerd-fonts
+      executable: /home/kalifornia909/git/nerdfonts/install.sh
+      cmd: install.sh
+
