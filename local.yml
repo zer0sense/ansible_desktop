@@ -14,13 +14,12 @@
         - terminator
         - neofetch
         - python3
-        - pip3
         - python3-psutil
         - zsh
 
   - name: copy alias file
     copy: 
       src: files/alias
-      dest: "{{ home }}/.alias"
-      owner: "{{ user }}"
-      group: "{{ group }}"
+      dest: ~
+      owner: {{ lookup('env', 'USER') }}
+      group: {{ lookup('env', 'USER') }}
