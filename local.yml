@@ -70,6 +70,6 @@
   - name: install nerd nerd-fonts
     shell:
       chdir: /home/kalifornia909/git/nerd-fonts
-      executable: /home/kalifornia909/git/nerdfonts/install.sh
+      executable: /home/kalifornia909/git/nerd-fonts/install.sh
       cmd: install.sh
 
