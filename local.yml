@@ -41,12 +41,14 @@
   - name: ohmyzsh Copy
     become_user: kalifornia909
     git:
+      become_user: kalifornia909
       clone: yes
       repo: https://github.com/ohmyzsh/ohmyzsh.git
       dest: /home/kalifornia909/git/ohmyzsh
       update: yes
 
   - name: install ohmyzsh
+    become_user: kalifornia909
     shell:
       chdir: /home/kalifornia909/git/ohmyzsh/tools
       executable: /home/kalifornia909/git/ohmyzsh/tools/install.sh
@@ -68,6 +70,7 @@
       dest: /home/kalifornia909/git/nerd-fonts
 
   - name: install nerd nerd-fonts
+    become_user: kalifornia909
     shell:
       chdir: /home/kalifornia909/git/nerd-fonts
       executable: /home/kalifornia909/git/nerd-fonts/install.sh
