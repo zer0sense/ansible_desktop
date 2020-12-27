@@ -13,3 +13,14 @@
         - neovim
         - terminator
         - neofetch
+        - python3
+        - pip3
+        - python3-psutil
+        - zsh
+
+  - name: copy alias file
+    copy: 
+      src: files/alias
+      dest: /$HOME/.alias
+      owner: $USER
+      group: $USER
