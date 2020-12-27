@@ -21,7 +21,8 @@
   - name: copy alias file
     become: true
     copy: 
-    src: files/alias
-    dest: "{{home}}/.alias"
-    owner: $USER
-    group: $USER
+     src: files/alias
+     dest: "{{home}}/.alias"
+     owner: $USER
+     group: $USER
+ 
