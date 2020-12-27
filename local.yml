@@ -41,7 +41,6 @@
   - name: ohmyzsh Copy
     become_user: kalifornia909
     git:
-      become_user: kalifornia909
       clone: yes
       repo: https://github.com/ohmyzsh/ohmyzsh.git
       dest: /home/kalifornia909/git/ohmyzsh
