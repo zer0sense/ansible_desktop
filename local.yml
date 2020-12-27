@@ -3,6 +3,8 @@
   connection: local
   become: true
 
+  vars:
+    user: "{{ lookup('env', 'USER') }}"
 
   tasks: 
   - name: install base packages
@@ -13,6 +15,7 @@
         - neovim
         - terminator
         - neofetch
+        - pip3
         - python3
         - python3-psutil
         - zsh
@@ -21,5 +24,5 @@
     copy: 
       src: files/alias
       dest: ~
-      owner: "{{ lookup('env', 'USER') }}"
-      group: "{{ lookup('env', 'USER') }}"
+      owner: "{{ user }}"
+      group: "{{ user }}"
