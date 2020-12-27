@@ -21,6 +21,6 @@
   - name: copy alias file
     copy: 
       src: files/alias
-      dest: "{{home}}/.alias"
-      owner: "{{user}}"
-      group: "{{group}}"
+      dest: "{{ home }}/.alias"
+      owner: "{{ user }}"
+      group: "{{ group }}"
