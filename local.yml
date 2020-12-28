@@ -94,5 +94,5 @@
     become_user: kalifornia909
     shell:
       chdir: /home/kalifornia909/git/nerd-fonts
-      executable: /home/kalifornia909/git/nerd-tools/install.sh
+      executable: /home/kalifornia909/git/nerd-tools/
       cmd: install.sh
