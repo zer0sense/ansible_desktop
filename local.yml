@@ -2,12 +2,10 @@
 - hosts: localhost
   connection: local
   become: true
-
-  vars:
-    user: "{{ lookup('env', 'USER') }}"
+  gather_facts: true
 
   tasks: 
-  - name: install base packages
+  - name: Install Base Packages
     package: 
       name: 
         - htop
@@ -17,28 +15,7 @@
         - neofetch
         - zsh
 
-  - name: copy alias file
-    copy:
-      src: files/alias
-      dest: /home/kalifornia909/.alias
-      owner: kalifornia909
-      group: kalifornia909
-
-  - name: copy bash file
-    copy:
-      src: files/bash
-      dest: /home/kalifornia909/.bashrc
-      owner: kalifornia909
-      group: kalifornia909
-
-  - name: copy zsh file
-    copy:
-      src: files/zsh
-      dest: /home/kalifornia909/.zshrc
-      owner: kalifornia909
-      group: kalifornia909
-
-  - name: ohmyzsh Copy
+  - name: Clone ohmyzsh
     become_user: kalifornia909
     git:
       clone: yes
@@ -46,14 +23,14 @@
       dest: /home/kalifornia909/git/ohmyzsh
       update: yes
 
-  - name: install ohmyzsh
+  - name: Install ohmyzsh
     become_user: kalifornia909
     shell:
       chdir: /home/kalifornia909/git/ohmyzsh/tools
       executable: /home/kalifornia909/git/ohmyzsh/tools/install.sh
       cmd: install.sh
 
-  - name: powerlevel10k
+  - name: Clone Powerlevel10k
     become_user: kalifornia909
     git:
       clone: yes
@@ -61,17 +38,44 @@
       dest: /home/kalifornia909/.oh-my-zsh/custom/themes/powerlevel10k
       update: yes
   
-  - name: nerd-fonts
+  - name: Clone Nerd-Fonts
     become_user: kalifornia909
     git:
       clone: yes
       repo: https://github.com/ryanoasis/nerd-fonts.git
       dest: /home/kalifornia909/git/nerd-fonts
 
-  - name: install nerd nerd-fonts
+  - name: Install Nerd-Fonts
     become_user: kalifornia909
     shell:
       chdir: /home/kalifornia909/git/nerd-fonts
       executable: /home/kalifornia909/git/nerd-fonts/install.sh
       cmd: install.sh
 
+  - name: Copy Alias File
+    copy:
+      src: files/alias
+      dest: /home/kalifornia909/.alias
+      owner: kalifornia909
+      group: kalifornia909
+
+  - name: Copy BASH File
+    copy:
+      src: files/bash
+      dest: /home/kalifornia909/.bashrc
+      owner: kalifornia909
+      group: kalifornia909
+
+  - name: Copy ZSH File
+    copy:
+      src: files/zsh
+      dest: /home/kalifornia909/.zshrc
+      owner: kalifornia909
+      group: kalifornia909
+
+  - name: Copy Powerlevel10k
+    copy:
+      src: files/p10k
+      dest: /home/kalifornia909/.p10k.zsh
+      owner: kalifornia909
+      group: kalifornia909
