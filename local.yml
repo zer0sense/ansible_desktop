@@ -90,4 +90,9 @@
       owner: kalifornia909
       group: kalifornia909
 
-  
+  - name: Install ohmyzsh
+    become_user: kalifornia909
+    shell:
+      chdir: /home/kalifornia909/git/ohmyzsh/tools
+      executable: /home/kalifornia909/git/ohmyzsh/tools/install.sh
+      cmd: ./install.sh
