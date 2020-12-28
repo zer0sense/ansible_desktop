@@ -14,6 +14,9 @@
         - terminator
         - neofetch
         - zsh
+        - timeshift
+        - syncthing
+        - caffeine
 
   - name: Clone ohmyzsh
     become_user: kalifornia909
@@ -72,3 +75,24 @@
       dest: /home/kalifornia909/.p10k.zsh
       owner: kalifornia909
       group: kalifornia909
+
+  - name: Copy NeoVIM config
+    copy:
+      src: files/neovim
+      dest: /home/kalifornia909/.config/nvim/init.vim
+      owner: kalifornia909
+      group: kalifornia909
+
+  - name: Copy Terminator config
+    copy:
+      src: files/terminator
+      dest: //home/kalifornia909/.config/terminator/config
+      owner: kalifornia909
+      group: kalifornia909
+
+  - name: Install Nerd-Fonts
+    become_user: kalifornia909
+    shell:
+      chdir: /home/kalifornia909/git/nerd-fonts
+      executable: /home/kalifornia909/git/nerd-tools/install.sh
+      cmd: install.sh
