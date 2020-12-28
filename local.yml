@@ -45,13 +45,6 @@
       repo: https://github.com/ryanoasis/nerd-fonts.git
       dest: /home/kalifornia909/git/nerd-fonts
 
-  - name: Install Nerd-Fonts
-    become_user: kalifornia909
-    shell:
-      chdir: /home/kalifornia909/git/nerd-fonts
-      executable: /home/kalifornia909/git/nerd-fonts/install.sh
-      cmd: install.sh
-
   - name: Copy Alias File
     copy:
       src: files/alias
