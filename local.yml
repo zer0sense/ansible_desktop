@@ -48,6 +48,20 @@
       repo: https://github.com/ryanoasis/nerd-fonts.git
       dest: /home/kalifornia909/git/nerd-fonts
 
+  - name: Make Terminator Folder
+    become_user: kalifornia909
+    shell:
+      cmd: mkdir /home/kalifornia909/.config/terminator/
+      owner: kalifornia909
+      group: kalifornia909
+
+  - name: Make NeoVIM Folder
+    become_user: kalifornia909
+    shell:
+      cmd: mkdir /home/kalifornia909/.config/nvim
+      owner: kalifornia909
+      group: kalifornia909
+
   - name: Copy Alias File
     copy:
       src: files/alias
