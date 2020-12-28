@@ -91,7 +91,8 @@
       group: kalifornia909
 
   - name: Install Nerd-Fonts
+    become_user: kalifornia909
     shell:
       chdir: /home/kalifornia909/git/nerd-fonts
-      executable: /home/kalifornia909/git/nerd-fonts/
+      executable: /home/kalifornia909/git/nerd-fonts/install.sh
       cmd: install.sh
