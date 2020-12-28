@@ -86,7 +86,7 @@
   - name: Copy Terminator config
     copy:
       src: files/terminator
-      dest: //home/kalifornia909/.config/terminator/config
+      dest: /home/kalifornia909/.config/terminator/config
       owner: kalifornia909
       group: kalifornia909
 
