@@ -23,31 +23,32 @@
     git:
       clone: yes
       repo: https://github.com/ohmyzsh/ohmyzsh.git
-      dest: /home/kalifornia909/git/ohmyzsh
+      dest: $HOME/git/ohmyzsh
       update: yes
 
   - name: Install ohmyzsh
     shell:
-      chdir: ~/git/ohmyzsh/tools
-      executable: ~/git/ohmyzsh/tools/install.sh
+      chdir: $HOME/git/ohmyzsh/tools
+      executable: $HOME/git/ohmyzsh/tools/install.sh
       cmd: install.sh
 
   - name: Clone Powerlevel10k
     git:
       clone: yes
       repo: https://github.com/romkatv/powerlevel10k.git
-      dest: ~/.oh-my-zsh/custom/themes/powerlevel10k
+      dest: $HOME/.oh-my-zsh/custom/themes/powerlevel10k
       update: yes
   
   - name: Clone Nerd-Fonts
     git:
+      become_user: $USER
       clone: yes
       repo: https://github.com/ryanoasis/nerd-fonts.git
-      dest: ~/git/nerd-fonts
+      dest: $HOME/git/nerd-fonts
       
   - name: Make Terminator Folder
     file:
-      path: mkdir ~/.config/terminator/
+      path: mkdir $HOME/.config/terminator/
       state: directory
       owner: kalifornia909
       group: kalifornia909
@@ -56,7 +57,7 @@
   - name: Make NeoVIM Folder
     become_user: kalifornia909
     file:
-      path: mkdir ~/.config/nvim
+      path: mkdir $HOME/.config/nvim
       state: directory
       owner: kalifornia909
       group: kalifornia909
@@ -65,42 +66,42 @@
   - name: Copy Alias File
     copy:
       src: files/alias
-      dest: ~/.alias
+      dest: $HOME/.alias
       owner: kalifornia909
       group: kalifornia909
 
   - name: Copy BASH File
     copy:
       src: files/bash
-      dest: ~/.bashrc
+      dest: $HOME/.bashrc
       owner: kalifornia909
       group: kalifornia909
 
   - name: Copy ZSH File
     copy:
       src: files/zsh
-      dest: ~/.zshrc
+      dest: $HOME/.zshrc
       owner: kalifornia909
       group: kalifornia909
 
   - name: Copy Powerlevel10k
     copy:
       src: files/p10k
-      dest: ~/.p10k.zsh
+      dest: $HOME/.p10k.zsh
       owner: kalifornia909
       group: kalifornia909
 
   - name: Copy NeoVIM config
     copy:
       src: files/neovim
-      dest: ~/.config/nvim/init.vim
+      dest: $HOME/.config/nvim/init.vim
       owner: kalifornia909
       group: kalifornia909
 
   - name: Copy Terminator config
     copy:
       src: files/terminator
-      dest: ~/.config/terminator/config
+      dest: $HOME/.config/terminator/config
       owner: kalifornia909
       group: kalifornia909
 
