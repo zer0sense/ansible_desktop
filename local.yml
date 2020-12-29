@@ -17,90 +17,90 @@
         - timeshift
         - syncthing
         - caffeine
+        - qemu-guest-agent
 
   - name: Clone ohmyzsh
-    become_user: kalifornia909
-    git:
+      git:
       clone: yes
       repo: https://github.com/ohmyzsh/ohmyzsh.git
       dest: /home/kalifornia909/git/ohmyzsh
       update: yes
 
   - name: Install ohmyzsh
-    become_user: kalifornia909
-    shell:
-      chdir: /home/kalifornia909/git/ohmyzsh/tools
-      executable: /home/kalifornia909/git/ohmyzsh/tools/install.sh
+      shell:
+      chdir: ~/git/ohmyzsh/tools
+      executable: ~/git/ohmyzsh/tools/install.sh
       cmd: install.sh
 
   - name: Clone Powerlevel10k
-    become_user: kalifornia909
-    git:
+      git:
       clone: yes
       repo: https://github.com/romkatv/powerlevel10k.git
-      dest: /home/kalifornia909/.oh-my-zsh/custom/themes/powerlevel10k
+      dest: ~/.oh-my-zsh/custom/themes/powerlevel10k
       update: yes
   
   - name: Clone Nerd-Fonts
-    become_user: kalifornia909
-    git:
+      git:
       clone: yes
       repo: https://github.com/ryanoasis/nerd-fonts.git
-      dest: /home/kalifornia909/git/nerd-fonts
-
+      dest: ~/git/nerd-fonts
+      
   - name: Make Terminator Folder
-    become_user: kalifornia909
-    shell:
-      cmd: mkdir /home/kalifornia909/.config/terminator/
+      file:
+      path: mkdir ~/.config/terminator/
+      state: directory
       owner: kalifornia909
       group: kalifornia909
+      mode: 0775
 
   - name: Make NeoVIM Folder
     become_user: kalifornia909
-    shell:
-      cmd: mkdir /home/kalifornia909/.config/nvim
+    file:
+      path: mkdir ~/.config/nvim
+      state: directory
       owner: kalifornia909
       group: kalifornia909
+      mode: 0775
 
   - name: Copy Alias File
     copy:
       src: files/alias
-      dest: /home/kalifornia909/.alias
+      dest: ~/.alias
       owner: kalifornia909
       group: kalifornia909
 
   - name: Copy BASH File
     copy:
       src: files/bash
-      dest: /home/kalifornia909/.bashrc
+      dest: ~/.bashrc
       owner: kalifornia909
       group: kalifornia909
 
   - name: Copy ZSH File
     copy:
       src: files/zsh
-      dest: /home/kalifornia909/.zshrc
+      dest: ~/.zshrc
       owner: kalifornia909
       group: kalifornia909
 
   - name: Copy Powerlevel10k
     copy:
       src: files/p10k
-      dest: /home/kalifornia909/.p10k.zsh
+      dest: ~/.p10k.zsh
       owner: kalifornia909
       group: kalifornia909
 
   - name: Copy NeoVIM config
     copy:
       src: files/neovim
-      dest: /home/kalifornia909/.config/nvim/init.vim
+      dest: ~/.config/nvim/init.vim
       owner: kalifornia909
       group: kalifornia909
 
   - name: Copy Terminator config
     copy:
       src: files/terminator
-      dest: /home/kalifornia909/.config/terminator/config
+      dest: ~/.config/terminator/config
       owner: kalifornia909
       group: kalifornia909
 
