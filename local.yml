@@ -2,7 +2,9 @@
 - hosts: localhost
   connection: local
   become: true
-  gather_facts: true
+  become_method: sudo
+  vars:
+    user: {{ lookup('env', 'USER') }}
 
   tasks: 
   - name: Install Base Packages
@@ -17,9 +19,9 @@
         - timeshift
         - syncthing
         - caffeine
-        - qemu-guest-agent
+        - spice-vdagent
 
-  - name: Clone ohmyzsh
+   - name: Clone ohmyzsh
     git:
       clone: yes
       repo: https://github.com/ohmyzsh/ohmyzsh.git
@@ -41,7 +43,7 @@
   
   - name: Clone Nerd-Fonts
     git:
-      become_user: $USER
+      become_user: {{ user }}
       clone: yes
       repo: https://github.com/ryanoasis/nerd-fonts.git
       dest: $HOME/git/nerd-fonts
@@ -50,58 +52,58 @@
     file:
       path: mkdir $HOME/.config/terminator/
       state: directory
-      owner: kalifornia909
-      group: kalifornia909
+      owner: {{ user }}
+      group: {{ user }}
       mode: 0775
 
   - name: Make NeoVIM Folder
-    become_user: kalifornia909
+    become_user: {{ user }}
     file:
       path: mkdir $HOME/.config/nvim
       state: directory
-      owner: kalifornia909
-      group: kalifornia909
+      owner: {{ user }}
+      group: {{ user }}
       mode: 0775
 
   - name: Copy Alias File
     copy:
       src: files/alias
       dest: $HOME/.alias
-      owner: kalifornia909
-      group: kalifornia909
+      owner: {{ user }}
+      group: {{ user }}
 
   - name: Copy BASH File
     copy:
       src: files/bash
       dest: $HOME/.bashrc
-      owner: kalifornia909
-      group: kalifornia909
+      owner: {{ user }}
+      group: {{ user }}
 
   - name: Copy ZSH File
     copy:
       src: files/zsh
       dest: $HOME/.zshrc
-      owner: kalifornia909
-      group: kalifornia909
+      owner: {{ user }}
+      group: {{ user }}
 
   - name: Copy Powerlevel10k
     copy:
       src: files/p10k
       dest: $HOME/.p10k.zsh
-      owner: kalifornia909
-      group: kalifornia909
+      owner: {{ user }}
+      group: {{ user }}
 
   - name: Copy NeoVIM config
     copy:
       src: files/neovim
       dest: $HOME/.config/nvim/init.vim
-      owner: kalifornia909
-      group: kalifornia909
+      owner: {{ user }}
+      group: {{ user }}
 
   - name: Copy Terminator config
     copy:
       src: files/terminator
       dest: $HOME/.config/terminator/config
-      owner: kalifornia909
-      group: kalifornia909
+      owner: {{ user }}
+      group: {{ user }}
 
