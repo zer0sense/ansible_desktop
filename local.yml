@@ -109,12 +109,6 @@
       repo: https://github.com/ryanoasis/nerd-fonts.git
       dest: "{{ home }}/git/nerd-fonts"
 
-  - name: Install Nerd-Fonts
-    shell:
-      chdir: "{{ home }}/git/nerd-fonts"
-      executable: "{{ home }}/git/nerd-fonts/install.sh"
-      cmd: install.sh
-
   - name: Copy ZSH File
     copy:
       src: files/zsh
