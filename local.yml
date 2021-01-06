@@ -34,7 +34,7 @@
 
   - name: Copy Alias File
     copy:
-       cd src: files/alias
+      src: files/alias
       dest: "{{ home }}/.alias"
       owner: "{{ user }}"
       group: "{{ user }}"
