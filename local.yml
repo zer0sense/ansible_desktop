@@ -3,6 +3,7 @@
   connection: local
   vars:
     user: "{{ lookup('env', 'USER') }}"
+    home: "{{ lookup('env', 'HOME') }}"
 
   tasks: 
   - name: Install Base Packages
@@ -22,7 +23,7 @@
 
   - name: Make git Folder
     file:
-      path: $HOME/git/
+      path: "{{ home }}/git/"
       state: directory
       owner: "{{ user }}"
       group: "{{ user }}"
@@ -32,31 +33,31 @@
     git:
       clone: yes
       repo: https://github.com/ohmyzsh/ohmyzsh.git
-      dest: $HOME/git/ohmyzsh
+      dest: "{{ home }}/git/ohmyzsh"
       update: yes
 
   - name: Install ohmyzsh
     shell:
-      chdir: $HOME/git/ohmyzsh/tools
-      executable: $HOME/git/ohmyzsh/tools/install.sh
+      chdir: "{{ home }}/git/ohmyzsh/tools"
+      executable: "{{ home }}/git/ohmyzsh/tools/install.sh"
       cmd: install.sh
 
   - name: Clone Powerlevel10k
     git:
       clone: yes
       repo: https://github.com/romkatv/powerlevel10k.git
-      dest: $HOME/.oh-my-zsh/custom/themes/powerlevel10k
+      dest: "{{ home }}/.oh-my-zsh/custom/themes/powerlevel10k"
       update: yes
   
   - name: Clone Nerd-Fonts
     git:
       clone: yes
       repo: https://github.com/ryanoasis/nerd-fonts.git
-      dest: $HOME/git/nerd-fonts
+      dest: "{{ home }}/git/nerd-fonts"
       
   - name: Make Terminator Folder
     file:
-      path: $HOME/.config/terminator/
+      path: "{{ home }}/.config/terminator/"
       state: directory
       owner: "{{ user }}"
       group: "{{ user }}"
@@ -65,7 +66,7 @@
   - name: Make NeoVIM Folder
     become_user: "{{ user }}"
     file:
-      path: mkdir $HOME/.config/nvim
+      path: mkdir "{{ home }}/.config/nvim"
       state: directory
       owner: "{{ user }}"
       group: "{{ user }}"
@@ -74,42 +75,42 @@
   - name: Copy Alias File
     copy:
       src: files/alias
-      dest: $HOME/.alias
+      dest: "{{ home }}/.alias"
       owner: "{{ user }}"
       group: "{{ user }}"
 
   - name: Copy BASH File
     copy:
       src: files/bash
-      dest: $HOME/.bashrc
+      dest: "{{ home }}/.bashrc"
       owner: "{{ user }}"
       group: "{{ user }}"
 
   - name: Copy ZSH File
     copy:
       src: files/zsh
-      dest: $HOME/.zshrc
+      dest: "{{ home }}/.zshrc"
       owner: "{{ user }}"
       group: "{{ user }}"
 
   - name: Copy Powerlevel10k
     copy:
       src: files/p10k
-      dest: $HOME/.p10k.zsh
+      dest: "{{ home }}/.p10k.zsh"
       owner: "{{ user }}"
       group: "{{ user }}"
 
   - name: Copy NeoVIM config
     copy:
       src: files/neovim
-      dest: $HOME/.config/nvim/init.vim
+      dest: "{{ home }}/.config/nvim/init.vim"
       owner: "{{ user }}"
       group: "{{ user }}"
 
   - name: Copy Terminator config
     copy:
       src: files/terminator
-      dest: $HOME/.config/terminator/config
+      dest: "{{ home }}/.config/terminator/config"
       owner: "{{ user }}"
       group: "{{ user }}"
 
