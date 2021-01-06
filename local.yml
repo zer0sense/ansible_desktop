@@ -7,7 +7,6 @@
   tasks: 
   - name: Install Base Packages
     become: true
-    become_method: sudo
     package: 
       name: 
         - htop
