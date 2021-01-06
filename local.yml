@@ -20,6 +20,14 @@
         - caffeine
         - spice-vdagent
 
+  - name: Make git Folder
+    file:
+      path: $HOME/git/
+      state: directory
+      owner: "{{ user }}"
+      group: "{{ user }}"
+      mode: 0775
+
   - name: Clone ohmyzsh
     git:
       clone: yes
