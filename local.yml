@@ -40,7 +40,7 @@
   - name: Make NeoVIM Folder
     become_user: "{{ user }}"
     file:
-      path: mkdir "{{ home }}/.config/nvim"
+      path: "{{ home }}/.config/nvim"
       state: directory
       owner: "{{ user }}"
       group: "{{ user }}"
