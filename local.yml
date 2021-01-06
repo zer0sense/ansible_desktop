@@ -1,13 +1,13 @@
 ---
 - hosts: localhost
   connection: local
-  become: true
-  become_method: sudo
   vars:
-    user: {{ lookup('env', 'USER') }}
+    user: "{{ lookup('env', 'USER') }}"
 
   tasks: 
   - name: Install Base Packages
+    become: true
+    become_method: sudo
     package: 
       name: 
         - htop
@@ -21,7 +21,7 @@
         - caffeine
         - spice-vdagent
 
-   - name: Clone ohmyzsh
+  - name: Clone ohmyzsh
     git:
       clone: yes
       repo: https://github.com/ohmyzsh/ohmyzsh.git
@@ -43,67 +43,67 @@
   
   - name: Clone Nerd-Fonts
     git:
-      become_user: {{ user }}
+      become_user: ""{{ user }}""
       clone: yes
       repo: https://github.com/ryanoasis/nerd-fonts.git
       dest: $HOME/git/nerd-fonts
       
   - name: Make Terminator Folder
     file:
-      path: mkdir $HOME/.config/terminator/
+      path: $HOME/.config/terminator/
       state: directory
-      owner: {{ user }}
-      group: {{ user }}
+      owner: "{{ user }}"
+      group: "{{ user }}"
       mode: 0775
 
   - name: Make NeoVIM Folder
-    become_user: {{ user }}
+    become_user: "{{ user }}"
     file:
       path: mkdir $HOME/.config/nvim
       state: directory
-      owner: {{ user }}
-      group: {{ user }}
+      owner: "{{ user }}"
+      group: "{{ user }}"
       mode: 0775
 
   - name: Copy Alias File
     copy:
       src: files/alias
       dest: $HOME/.alias
-      owner: {{ user }}
-      group: {{ user }}
+      owner: "{{ user }}"
+      group: "{{ user }}"
 
   - name: Copy BASH File
     copy:
       src: files/bash
       dest: $HOME/.bashrc
-      owner: {{ user }}
-      group: {{ user }}
+      owner: "{{ user }}"
+      group: "{{ user }}"
 
   - name: Copy ZSH File
     copy:
       src: files/zsh
       dest: $HOME/.zshrc
-      owner: {{ user }}
-      group: {{ user }}
+      owner: "{{ user }}"
+      group: "{{ user }}"
 
   - name: Copy Powerlevel10k
     copy:
       src: files/p10k
       dest: $HOME/.p10k.zsh
-      owner: {{ user }}
-      group: {{ user }}
+      owner: "{{ user }}"
+      group: "{{ user }}"
 
   - name: Copy NeoVIM config
     copy:
       src: files/neovim
       dest: $HOME/.config/nvim/init.vim
-      owner: {{ user }}
-      group: {{ user }}
+      owner: "{{ user }}"
+      group: "{{ user }}"
 
   - name: Copy Terminator config
     copy:
       src: files/terminator
       dest: $HOME/.config/terminator/config
-      owner: {{ user }}
-      group: {{ user }}
+      owner: "{{ user }}"
+      group: "{{ user }}"
 
