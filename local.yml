@@ -6,22 +6,8 @@
     home: "{{ lookup('env', 'HOME') }}"
 
   tasks: 
-  - name: Install Base Packages
-    become: true
-    package: 
-      name: 
-        - htop
-        - tmux
-        - neovim
-        - terminator
-        - neofetch
-        - zsh
-        - timeshift
-        - syncthing
-        - caffeine
-        - spice-vdagent
-
   - name: Make git Folder
+    become_user: "{{ user }}"
     file:
       path: "{{ home }}/git/"
       state: directory
@@ -48,7 +34,7 @@
 
   - name: Copy Alias File
     copy:
-      src: files/alias
+       cd src: files/alias
       dest: "{{ home }}/.alias"
       owner: "{{ user }}"
       group: "{{ user }}"
@@ -113,6 +99,18 @@
       clone: yes
       repo: https://github.com/ryanoasis/nerd-fonts.git
       dest: "{{ home }}/git/nerd-fonts"
-      
-  
 
+  - name: Install Base Packages
+    become: true
+    package: 
+      name: 
+        - htop
+        - tmux
+        - neovim
+        - terminator
+        - neofetch
+        - zsh
+        - timeshift
+        - syncthing
+        - caffeine
+        - spice-vdagent 
