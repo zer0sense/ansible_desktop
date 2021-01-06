@@ -29,6 +29,23 @@
       group: "{{ user }}"
       mode: 0775
 
+  - name: Make Terminator Folder
+    file:
+      path: "{{ home }}/.config/terminator/"
+      state: directory
+      owner: "{{ user }}"
+      group: "{{ user }}"
+      mode: 0775
+
+  - name: Make NeoVIM Folder
+    become_user: "{{ user }}"
+    file:
+      path: mkdir "{{ home }}/.config/nvim"
+      state: directory
+      owner: "{{ user }}"
+      group: "{{ user }}"
+      mode: 0775
+
   - name: Clone ohmyzsh
     git:
       clone: yes
@@ -55,23 +72,6 @@
       repo: https://github.com/ryanoasis/nerd-fonts.git
       dest: "{{ home }}/git/nerd-fonts"
       
-  - name: Make Terminator Folder
-    file:
-      path: "{{ home }}/.config/terminator/"
-      state: directory
-      owner: "{{ user }}"
-      group: "{{ user }}"
-      mode: 0775
-
-  - name: Make NeoVIM Folder
-    become_user: "{{ user }}"
-    file:
-      path: mkdir "{{ home }}/.config/nvim"
-      state: directory
-      owner: "{{ user }}"
-      group: "{{ user }}"
-      mode: 0775
-
   - name: Copy Alias File
     copy:
       src: files/alias
