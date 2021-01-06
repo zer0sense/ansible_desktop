@@ -21,3 +21,8 @@ I am not able to get nerd-fonts to install through ansible, so you will have to 
 ```
 ~/git/nerd-fonts/install.sh
 ```
+
+If you get a shada error when using checkhealth in neovim use the following
+```
+nvim - NORC
+```
