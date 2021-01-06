@@ -6,8 +6,24 @@
     home: "{{ lookup('env', 'HOME') }}"
 
   tasks: 
+  - name: Install Base Packages
+    become: true
+    become_method: sudo
+    package: 
+      name: 
+        - htop
+        - tmux
+        - neovim
+        - terminator
+        - neofetch
+        - zsh
+        - timeshift
+        - syncthing
+        - caffeine
+        - spice-vdagent 
+
   - name: Make git Folder
-    become_user: "{{ user }}"
+    become: false
     file:
       path: "{{ home }}/git/"
       state: directory
@@ -99,18 +115,3 @@
       clone: yes
       repo: https://github.com/ryanoasis/nerd-fonts.git
       dest: "{{ home }}/git/nerd-fonts"
-
-  - name: Install Base Packages
-    become: true
-    package: 
-      name: 
-        - htop
-        - tmux
-        - neovim
-        - terminator
-        - neofetch
-        - zsh
-        - timeshift
-        - syncthing
-        - caffeine
-        - spice-vdagent 
