@@ -21,6 +21,7 @@
         - syncthing
         - caffeine
         - spice-vdagent 
+        - zsh-syntax-highlighting
 
   - name: Make git Folder
     become: false
