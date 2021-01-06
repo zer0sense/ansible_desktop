@@ -43,7 +43,6 @@
   
   - name: Clone Nerd-Fonts
     git:
-      become_user: ""{{ user }}""
       clone: yes
       repo: https://github.com/ryanoasis/nerd-fonts.git
       dest: $HOME/git/nerd-fonts
