@@ -46,32 +46,6 @@
       group: "{{ user }}"
       mode: 0775
 
-  - name: Clone ohmyzsh
-    git:
-      clone: yes
-      repo: https://github.com/ohmyzsh/ohmyzsh.git
-      dest: "{{ home }}/git/ohmyzsh"
-      update: yes
-
-  - name: Install ohmyzsh
-    shell:
-      chdir: "{{ home }}/git/ohmyzsh/tools"
-      executable: "{{ home }}/git/ohmyzsh/tools/install.sh"
-      cmd: install.sh
-
-  - name: Clone Powerlevel10k
-    git:
-      clone: yes
-      repo: https://github.com/romkatv/powerlevel10k.git
-      dest: "{{ home }}/.oh-my-zsh/custom/themes/powerlevel10k"
-      update: yes
-  
-  - name: Clone Nerd-Fonts
-    git:
-      clone: yes
-      repo: https://github.com/ryanoasis/nerd-fonts.git
-      dest: "{{ home }}/git/nerd-fonts"
-      
   - name: Copy Alias File
     copy:
       src: files/alias
@@ -113,4 +87,32 @@
       dest: "{{ home }}/.config/terminator/config"
       owner: "{{ user }}"
       group: "{{ user }}"
+
+  - name: Clone ohmyzsh
+    git:
+      clone: yes
+      repo: https://github.com/ohmyzsh/ohmyzsh.git
+      dest: "{{ home }}/git/ohmyzsh"
+      update: yes
+
+  - name: Install ohmyzsh
+    shell:
+      chdir: "{{ home }}/git/ohmyzsh/tools"
+      executable: "{{ home }}/git/ohmyzsh/tools/install.sh"
+      cmd: install.sh
+
+  - name: Clone Powerlevel10k
+    git:
+      clone: yes
+      repo: https://github.com/romkatv/powerlevel10k.git
+      dest: "{{ home }}/.oh-my-zsh/custom/themes/powerlevel10k"
+      update: yes
+  
+  - name: Clone Nerd-Fonts
+    git:
+      clone: yes
+      repo: https://github.com/ryanoasis/nerd-fonts.git
+      dest: "{{ home }}/git/nerd-fonts"
+      
+  
 
