@@ -116,3 +116,7 @@
       dest: "{{ home }}/.zshrc"
       owner: "{{ user }}"
       group: "{{ user }}"
+
+  - name: NVIM Shada Error Fix
+    shell:
+      cmd: nvim - NORC
