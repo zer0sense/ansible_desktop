@@ -61,7 +61,6 @@
     shell: update-desktop-database
 
   - name: Make git Folder
-    become: false
     file:
       path: "{{ home }}/git/"
       state: directory
