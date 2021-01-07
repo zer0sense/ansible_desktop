@@ -123,7 +123,15 @@
     become_method: sudo
     unarchive:
       src: https://download.sublimetext.com/sublime_text_3_build_3211_x64.tar.bz2
-      dest: /usr/bin
+      dest: /opt
       remote_src: yes
       owner: "{{ user }}"
+
+  - name: Sublime Symbolic Link
+    become: yes
+    become_method: sudo
+    file:
+      src: "/opt/sublime_text_3/sublime_text"
+      dest: "/usr/bin/sublime"
+      state: link  
 
