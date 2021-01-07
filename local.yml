@@ -148,21 +148,12 @@
       owner: "{{ user }}"
       group: "{{ user }}"
 
-  - name: Copy Sublime Desktop File
-    become: yes
-    become_method: sudo
-    copy:
-      src: /opt/sublime_text_3/sublime_text.desktop
-      dest: /usr/share/applications
-      owner: "{{ user }}"
-      group: "{{ user }}"
-
   - name: Sublime Text Install Desktop File
     become: yes
     become_method: sudo
     shell: 
-      chdir: /usr/share/applications
-      cmd: desktop-file-install sublime_text.desktop
+      chdir: /opt/sublime_text_3/
+      cmd: desktop-file-install /usr/share/applications sublime_text.desktop
 
   - name: Update Installed Apps
     become: yes
