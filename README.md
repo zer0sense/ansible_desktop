@@ -1,7 +1,7 @@
 # Using Ansible to Deploy and Update my Config
 
 ## Pre-Reqs
-> You must have ansible installed
+**You must have ansible installed**
 
 If you aren't sure you can try ansible --version
 
