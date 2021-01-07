@@ -104,7 +104,13 @@
       repo: https://github.com/romkatv/powerlevel10k.git
       dest: "{{ home }}/.oh-my-zsh/custom/themes/powerlevel10k"
       update: yes
-  
+
+  - name: ZSH Syntax Highlighting
+    git:
+      clone: yes
+      repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+      dest: "{{ home }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+ 
   - name: Clone Nerd-Fonts
     git:
       clone: yes
@@ -135,9 +141,9 @@
       dest: "/usr/bin/sublime"
       state: link  
 
-  - name: ZSH Syntax Highlighting
-    git:
-      clone: yes
-      repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
-      dest: "{{ home }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
-
+  - name: Sublime Desktop File
+    copy:
+      src: files/sublime_desktop
+      dest: /opt/sublime_text_3/sublime_text.desktop
+      owner: "{{ user }}"
+      group: "{{ user }}"
