@@ -135,3 +135,9 @@
       dest: "/usr/bin/sublime"
       state: link  
 
+  - name: ZSH Syntax Highlighting
+    git:
+      clone: yes
+      repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+      dest: "{{ home }}/.oh-my-zsh/custom/plugins"
+
