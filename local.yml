@@ -147,3 +147,15 @@
       dest: /opt/sublime_text_3/sublime_text.desktop
       owner: "{{ user }}"
       group: "{{ user }}"
+
+  - name: Sublime Text Install Desktop File
+    become: yes
+    become_method: sudo
+    shell: 
+      chdir: /opt/sublime_text_3/
+      cmd: desktop-file-install sublime_text.desktop
+
+  - name: Update Installed Apps
+    become: yes
+    become_method: sudo
+    shell: update-desktop-database
