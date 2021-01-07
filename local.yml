@@ -153,7 +153,7 @@
     become_method: sudo
     shell: 
       chdir: /opt/sublime_text_3/
-      cmd: desktop-file-install /usr/share/applications sublime_text.desktop
+      cmd: desktop-file-install --dir=/usr/share/applications sublime_text.desktop
 
   - name: Update Installed Apps
     become: yes
