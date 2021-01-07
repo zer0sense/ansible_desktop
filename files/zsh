@@ -80,7 +80,7 @@ plugins=(git colorize sublime emoji magic-enter python pip archlinux)
 
 source $ZSH/oh-my-zsh.sh
 
-source $HOME/.oh-my-zsh/custom/plugins/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting.zsh
+source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source $HOME/.alias
 
