@@ -1,11 +1,16 @@
 [global_config]
 [keybindings]
+  split_horiz = <Alt><Super>Down
+  split_vert = <Alt><Super>Right
+  toggle_zoom = <Alt><Super>m
 [profiles]
   [[default]]
     background_darkness = 0.8
     cursor_color = "#aaaaaa"
+    font = NotoSansMono Nerd Font Medium 11
     show_titlebar = False
     palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#ffffff"
+    use_system_font = False
   [[Mine]]
     background_color = "#2e3436"
     background_darkness = 0.94
