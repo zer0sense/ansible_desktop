@@ -7,6 +7,10 @@ If you aren't sure you can try ansible --version
 
 The only way I am able to get this working is by using sudo and running a command before using ansible-pull.
 ---
+```
+sudo apt update && ansible-pull -U https://github.com/zer0sense/ansible_desktop
+```
+
 
 ```
 sudo pacman -Sy && ansible-pull -U https://github.com/zer0sense/ansible_desktop
