@@ -1,7 +1,7 @@
 [global_config]
 [keybindings]
-  split_horiz = <Alt><Super>Down
-  split_vert = <Alt><Super>Right
+  split_horiz = <Primary><Super>Down
+  split_vert = <Primary><Super>Right
   toggle_zoom = <Alt><Super>m
 [profiles]
   [[default]]
