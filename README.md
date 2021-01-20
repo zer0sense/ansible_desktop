@@ -9,10 +9,6 @@ The only way I am able to get this working is by using sudo and running a comman
 ---
 
 ```
-sudo apt update && ansible-pull -U https://github.com/zer0sense/ansible_desktop
-```
-
-```
 sudo pacman -Sy && ansible-pull -U https://github.com/zer0sense/ansible_desktop
 ```
 
