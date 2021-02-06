@@ -28,3 +28,4 @@ If you get a shada error when using checkhealth in neovim use the following
 ```
 nvim - NORC
 ```
+If you run this playbook on the same machine twice you will have to remove the .ohmyzsh folder in your home directory or else it will fail. This will halt the playbook from continuing. 
