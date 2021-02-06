@@ -19,7 +19,6 @@
         - zsh
         - timeshift
         - syncthing
-        - caffeine
         - spice-vdagent 
         - zsh-syntax-highlighting
         - curl
