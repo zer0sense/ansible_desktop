@@ -22,6 +22,7 @@
         - spice-vdagent 
         - zsh-syntax-highlighting
         - curl
+        - alacritty
 
   - name: Sublime Text
     become: yes
@@ -154,5 +155,27 @@
     copy:
       src: files/zsh
       dest: "{{ home }}/.zshrc"
+      owner: "{{ user }}"
+      group: "{{ user }}"
+
+  - name: Make Alacritty Folder
+    file:
+      path: "{{ home }}/.config/alacritty"
+      state: directory
+      owner: "{{ user }}"
+      group: "{{ user }}"
+      mode: 0775
+
+  - name: Copy Alacritty config
+    copy:
+      src: files/alacritty
+      dest: "{{ home }}/.config/alacritty/alacritty.yml"
+      owner: "{{ user }}"
+      group: "{{ user }}"
+
+  - name: Copy TMUX config
+    copy:
+      src: files/tmux
+      dest: "{{ home }}/.tmux.conf"
       owner: "{{ user }}"
       group: "{{ user }}"
