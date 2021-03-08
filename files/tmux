@@ -39,7 +39,9 @@ bind -n C-S-x kill-window
 bind -n C-n new-window -a
 
 # Toggle Layouts
-bind -n C-Space select-layout -n
+bind -n M-t select-layout -n
+
+bind -n C-Space command-prompt -I "#W" "rename-window '%%'"
 
 # Status Bar
 set-option -g status on
