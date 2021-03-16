@@ -22,7 +22,6 @@
         - spice-vdagent 
         - zsh-syntax-highlighting
         - curl
-        - alacritty
 
   - name: Sublime Text
     become: yes
