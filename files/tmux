@@ -27,7 +27,7 @@ bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded."
 set -g default-terminal screen-256color
 
 # Zoom Pane
-bind -n C-z resize-pane -Z
+bind -n C-S-Up resize-pane -Z
 
 # Kill Pane
 bind -n C-x kill-pane
