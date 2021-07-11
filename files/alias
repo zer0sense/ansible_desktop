@@ -8,6 +8,9 @@ alias more=less
 alias vim=nvim
 alias subl=sublime
 
+# Copy to clipboard
+alias clip='xclip  -selection clipboard'
+
 # Navigation
 alias ..='cd ..' 
 alias ...='cd ../..'
