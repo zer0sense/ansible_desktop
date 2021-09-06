@@ -14,14 +14,18 @@
         - htop
         - tmux
         - neovim
-        - terminator
         - neofetch
         - zsh
         - timeshift
-        - syncthing
         - spice-vdagent 
         - zsh-syntax-highlighting
         - curl
+        - cargo
+        - cmake
+        - pkg-config
+        - libfreetype6-dev
+        - libfontconfig1-dev
+        - libxcb-xfixes0-dev
 
   - name: Sublime Text
     become: yes
@@ -53,11 +57,6 @@
     shell: 
       chdir: /opt/sublime_text_3/
       cmd: desktop-file-install --dir=/usr/share/applications sublime_text.desktop
-
-  - name: Update Installed Apps
-    become: yes
-    become_method: sudo
-    shell: update-desktop-database
 
   - name: Make git Folder
     file:
@@ -178,3 +177,49 @@
       dest: "{{ home }}/.tmux.conf"
       owner: "{{ user }}"
       group: "{{ user }}"
+
+  - name: Clone Alacritty
+    git:
+      clone: yes
+      repo: https://github.com/alacritty/alacritty.git
+      dest: "{{ home }}/git/alacritty"
+
+  - name: Cargo Install Alacritty
+    shell: 
+      chdir: "{{ home }}/git/alacritty/"
+      cmd: cargo build --release
+
+  - name: Copy Alacritty bin
+    become: yes
+    become_method: sudo
+    copy:
+      src: "{{ home }}/git/alacritty/target/release/alacritty"
+      dest: "/usr/local/bin"
+      owner: "{{ user }}"
+      group: "{{ user }}"
+      mode: 0775
+
+  - name: Copy Alacritty Logo
+    become: yes
+    become_method: sudo
+    copy:
+      src: "{{ home }}/git/alacritty/extra/logo/alacritty-term.svg"
+      dest: "/usr/share/pixmaps/Alacritty.svg"
+      owner: "{{ user }}"
+      group: "{{ user }}"
+      mode: 0775
+
+  - name: Copy Alacritty Desktop File
+    become: yes
+    become_method: sudo
+    shell:
+      chdir: "{{ home }}/git/alacritty/"
+      cmd: desktop-file-install extra/linux/Alacritty.desktop
+      owner: "{{ user }}"
+      group: "{{ user }}"
+      mode: 0775
+
+  - name: Update Installed Apps
+    become: yes
+    become_method: sudo
+    shell: update-desktop-database
