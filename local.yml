@@ -122,7 +122,6 @@
       clone: yes
       repo: https://github.com/ohmyzsh/ohmyzsh.git
       dest: "{{ home }}/git/ohmyzsh"
-      state: present
       update: yes
 
   - name: Install ohmyzsh
@@ -130,7 +129,6 @@
       chdir: "{{ home }}/git/ohmyzsh/tools"
       executable: "{{ home }}/git/ohmyzsh/tools/install.sh"
       cmd: install.sh
-      state: present
 
   - name: Clone Powerlevel10k
     git:
