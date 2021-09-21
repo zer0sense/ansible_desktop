@@ -14,7 +14,7 @@ bind -n S-Left previous-window
 bind -n S-Right next-window
 
 # Mouse mode
-setw -g mouse on
+set -g mouse on
 
 # Set easier window split keys
 bind -n C-Right split-window -h
