@@ -34,11 +34,11 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 6
-    y: 6
+    x: 3
+    y: 3
 
   # Spread additional padding evenly around the terminal content.
-  #dynamic_padding: false
+  dynamic_padding: false
 
   # Window decorations
   #
@@ -76,7 +76,7 @@ window:
   #
   # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
   # Set this to `None` to use the default theme variant.
-  #gtk_theme_variant: None
+  #gtk_theme_variant: dark
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -120,7 +120,7 @@ font:
     family: Hack
 
     # The `style` can be specified to pick a specific face.
-    style: Regular
+  style: Regular
 
   # Bold font face
   bold:
@@ -145,7 +145,7 @@ font:
   italic:
     # Font family
     #
-    # If the italic family is not specified, it will fall back to the
+    # If the italic family is not spcified, it will fall back to the
     # value specified for the normal font.
     # family: SauceCodePro Nerd Font Mono
     # family: CodeNewRoman Nerd Font
@@ -155,7 +155,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
-    family: SauceCodePro Nerd Font
+    family: Hack
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -174,13 +174,13 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
-    family: SauceCodePro Nerd Font
+    family: Hack
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
 
   # Point size
-  size: 11.0
+  size: 11.5
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -214,118 +214,457 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Colors (Night Owl)
-colors:
-   # Default colors
-  primary:
-    background: '#011627'
-    foreground: '#d6deeb'
+# COLOR SCHEMES
+schemes:
 
-  cursor:
-    text: '#011627'
-    cursor: '#d6deeb'
+  # Afterglow
+  afterglow: &afterglow
+    primary:
+      background: '#2c2c2c'
+      foreground: '#d6d6d6'
 
-  selection:
-    background: '#1b90dd'
+      dim_foreground:    '#dbdbdb'
+      bright_foreground: '#d9d9d9'
+      dim_background:    '#202020' # not sure
+      bright_background: '#3a3a3a' # not sure
 
-   # Normal colors
-  normal:
-    black:   '#011627'
-    red:     '#ef5350'
-    green:   '#22da6e'
-    yellow:  '#c5e478'
-    blue:    '#82aaff'
-    magenta: '#c792ea'
-    cyan:    '#21c7a8'
-    white:   '#ffffff'
+    # Cursor colors
+    cursor:
+      text:   '#2c2c2c'
+      cursor: '#d9d9d9'
 
-   # Bright colors
-  bright:
-    black:   '#575656'
-    red:     '#ef5350'
-    green:   '#22da6e'
-    yellow:  '#ffeb95'
-    blue:    '#82aaff'
-    magenta: '#c792ea'
-    cyan:    '#7fdbca'
-    white:   '#ffffff'
+    # Normal colors
+    normal:
+      black:   '#1c1c1c'
+      red:     '#bc5653'
+      green:   '#909d63'
+      yellow:  '#ebc17a'
+      blue:    '#7eaac7'
+      magenta: '#aa6292'
+      cyan:    '#86d3ce'
+      white:   '#cacaca'
 
-# Colors (Tomorrow Night Bright)
-# colors:
+    # Bright colors
+    bright:
+      black:   '#636363'
+      red:     '#bc5653'
+      green:   '#909d63'
+      yellow:  '#ebc17a'
+      blue:    '#7eaac7'
+      magenta: '#aa6292'
+      cyan:    '#86d3ce'
+      white:   '#f7f7f7'
+
+    # Dim colors
+    dim:
+      black:   '#232323'
+      red:     '#74423f'
+      green:   '#5e6547'
+      yellow:  '#8b7653'
+      blue:    '#556b79'
+      magenta: '#6e4962'
+      cyan:    '#5c8482'
+      white:   '#828282'
+  
+  # Argonaut
+  agronaut: &agronaut
+    primary:
+      background: '#292C3E'
+      foreground: '#EBEBEB'
+
+    # Cursor colors
+    cursor:
+      text: '#FF261E'
+      cursor: '#FF261E'
+
+    # Normal colors
+    normal:
+      black:   '#0d0d0d'
+      red:     '#FF301B'
+      green:   '#A0E521'
+      yellow:  '#FFC620'
+      blue:    '#1BA6FA'
+      magenta: '#8763B8'
+      cyan:    '#21DEEF'
+      white:   '#EBEBEB'
+
+    # Bright colors
+    bright:
+      black:   '#6D7070'
+      red:     '#FF4352'
+      green:   '#B8E466'
+      yellow:  '#FFD750'
+      blue:    '#1BA6FA'
+      magenta: '#A578EA'
+      cyan:    '#73FBF1'
+      white:   '#FEFEF8'
+
+  #Ayu Dark
+  ayu_dark: &ayu_dark
+    primary:
+      background: '#0A0E14'
+      foreground: '#B3B1AD'
+
+    # Normal colors
+    normal:
+      black: '#01060E'
+      red: '#EA6C73'
+      green: '#91B362'
+      yellow: '#F9AF4F'
+      blue: '#53BDFA'
+      magenta: '#FAE994'
+      cyan: '#90E1C6'
+      white: '#C7C7C7'
+
+    # Bright colors
+    bright:
+      black: '#686868'
+      red: '#F07178'
+      green: '#C2D94C'
+      yellow: '#FFB454'
+      blue: '#59C2FF'
+      magenta: '#FFEE99'
+      cyan: '#95E6CB'
+      white: '#FFFFFF'
+
+  # Doom One
+  doom-one: &doom-one
+    primary:
+      background: '#282c34'
+      foreground: '#bbc2cf'
+    cursor:
+      text: CellBackground
+      cursor: '#528bff'
+    selection:
+      text: CellForeground
+      background: '#3e4451'
+    normal:
+      black:   '#1c1f24'
+      red:     '#ff6c6b'
+      green:   '#98be65'
+      yellow:  '#da8548'
+      blue:    '#51afef'
+      magenta: '#c678dd'
+      cyan:    '#5699af'
+      white:   '#202328'
+    bright:
+      black:   '#5b6268'
+      red:     '#da8548'
+      green:   '#4db5bd'
+      yellow:  '#ecbe7b'
+      blue:    '#3071db'   # This is 2257a0 in Doom Emacs but I lightened it.
+      magenta: '#a9a1e1'
+      cyan:    '#46d9ff'
+      white:   '#dfdfdf'
+
+  # Dracula
+  dracula: &dracula
+    primary:
+      background: '#282a36'
+      foreground: '#f8f8f2'
+    cursor:
+      text: CellBackground
+      cursor: CellForeground
+    vi_mode_cursor:
+      text: CellBackground
+      cursor: CellForeground
+    search:
+      matches:
+        foreground: '#44475a'
+        background: '#50fa7b'
+      focused_match:
+        foreground: '#44475a'
+        background: '#ffb86c'
+      bar:
+        background: '#282a36'
+        foreground: '#f8f8f2'
+    line_indicator:
+      foreground: None
+      background: None
+    selection:
+      text: CellForeground
+      background: '#44475a'
+    normal:
+      black:   '#000000'
+      red:     '#ff5555'
+      green:   '#50fa7b'
+      yellow:  '#f1fa8c'
+      blue:    '#bd93f9'
+      magenta: '#ff79c6'
+      cyan:    '#8be9fd'
+      white:   '#bfbfbf'
+    bright:
+      black:   '#4d4d4d'
+      red:     '#ff6e67'
+      green:   '#5af78e'
+      yellow:  '#f4f99d'
+      blue:    '#caa9fa'
+      magenta: '#ff92d0'
+      cyan:    '#9aedfe'
+      white:   '#e6e6e6'
+    dim:
+      black:   '#14151b'
+      red:     '#ff2222'
+      green:   '#1ef956'
+      yellow:  '#ebf85b'
+      blue:    '#4d5b86'
+      magenta: '#ff46b0'
+      cyan:    '#59dffc'
+      white:   '#e6e6d1'
+  
+  # VSCode's integrated terminal default colors
+  # Primary and dimmed colors needed
+  colors:
+  vscode: &vscode
+    primary:
+      background: '#1e1e1e' #Background from Dark Theme
+      foreground: '#cccccc'
+
+    # Selection colors
+    selection:
+      text: CellForeground
+      background: '#565656'
+
+    # Normal colors
+    normal:
+      black:   '#000000'
+      red:     '#cd3131'
+      green:   '#0dbc79'
+      yellow:  '#e5e510'
+      blue:    '#2472c8'
+      magenta: '#bc3fbc'
+      cyan:    '#11a8cd'
+      white:   '#e5e5e5'
+
+    # Bright colors
+    bright:
+      black:   '#666666'
+      red:     '#f14c4c'
+      green:   '#23d18b'
+      yellow:  '#f5f543'
+      blue:    '#3b8eea'
+      magenta: '#d670d6'
+      cyan:    '#29b8db'
+      white:   '#e5e5e5'
+
+  # Colors (Solarized Light)
+  solarized-light: &solarized-light
+    # Default colors
+    primary:
+      background: '#fdf6e3' # base3
+      foreground: '#657b83' # base00
+
+    # Cursor colors
+    cursor:
+      text:   '#fdf6e3' # base3
+      cursor: '#657b83' # base00
+
+    # Normal colors
+    normal:
+      black:   '#073642' # base02
+      red:     '#dc322f' # red
+      green:   '#859900' # green
+      yellow:  '#b58900' # yellow
+      blue:    '#268bd2' # blue
+      magenta: '#d33682' # magenta
+      cyan:    '#2aa198' # cyan
+      white:   '#eee8d5' # base2
+
+    # Bright colors
+    bright:
+      black:   '#002b36' # base03
+      red:     '#cb4b16' # orange
+      green:   '#586e75' # base01
+      yellow:  '#657b83' # base00
+      blue:    '#839496' # base0
+      magenta: '#6c71c4' # violet
+      cyan:    '#93a1a1' # base1
+      white:   '#fdf6e3' # base3
+
+  # Colors (Seoul256)
+  seoul256: &seoul256
   # Default colors
-  #primary:
-  #  background: '0x282c34'
-  #  foreground: '0xbbc2cf'
+    primary:
+      background: '#3a3a3a'
+      foreground: '#d0d0d0'
 
-    # Bright and dim foreground colors
-    #
-    # The dimmed foreground color is calculated automatically if it is not present.
-    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
-    # is `false`, the normal foreground color will be used.
-    #dim_foreground: '0x9a9a9a'
-    #bright_foreground: '0xffffff'
+    # Normal colors
+    normal:
+      black:   '#4e4e4e'
+      red:     '#d68787'
+      green:   '#5f865f'
+      yellow:  '#d8af5f'
+      blue:    '#85add4'
+      magenta: '#d7afaf'
+      cyan:    '#87afaf'
+      white:   '#d0d0d0'
 
-  # Cursor colors
-  #
-  # Colors which should be used to draw the terminal cursor. If these are unset,
-  # the cursor color will be the inverse of the cell color.
-  #cursor:
-  #  text: '0x000000'
-  #  cursor: '0xffffff'
+    # Bright colors
+    bright:
+      black:   '#626262'
+      red:     '#d75f87'
+      green:   '#87af87'
+      yellow:  '#ffd787'
+      blue:    '#add4fb'
+      magenta: '#ffafaf'
+      cyan:    '#87d7d7'
+      white:   '#e4e4e4'
+  
+  #PopOS
+  popOS: &popOS
+    primary:
+      background: '#333333'
+      foreground: '#F2F2F2'
 
-  # Selection colors
-  #
-  # Colors which should be used to draw the selection area. If selection
-  # background is unset, selection color will be the inverse of the cell colors.
-  # If only text is unset the cell text color will remain the same.
-  #selection:
-  #  text: '0xbbc2cf'
+    # Normal colors
+    normal:
+      black:   '#333333'
+      red:     '#CC0000'
+      green:   '#4E9A06'
+      yellow:  '#C4A000'
+      blue:    '#3465A4'
+      magenta: '#75507B'
+      cyan:    '#06989A'
+      white:   '#D3D7CF'
 
-  # Normal colors
-  #normal:
-  #  black:   '0x1c1f24'
-  #  red:     '0xff6c6b'
-  #  green:   '0x98be65'
-  #  yellow:  '0xda8548'
-  #  blue:    '0x51afef'
-  #  magenta: '0xc678dd'
-  #  cyan:    '0x5699af'
-  #  white:   '0x202328'
+    # Bright colors
+    bright:
+      black:   '#88807C'
+      red:     '#F15D22'
+      green:   '#73C48F'
+      yellow:  '#FFCE51'
+      blue:    '#48B9C7'
+      magenta: '#AD7FA8'
+      cyan:    '#34E2E2'
+      white:   '#EEEEEC'
+  
+   # Colors (Night Owl)
+  nightowl: &nightowl
+    primary:
+      background: '#011627'
+      foreground: '#d6deeb'
 
-  # Bright colors
-  #bright:
-  #  black:   '0x5b6268'
-  #  red:     '0xda8548'
-  #  green:   '0x4db5bd'
-  #  yellow:  '0xecbe7b'
-  #  blue:    '0x3071db'   # This is 2257a0 in Doom Emacs but I lightened it.
-  #  magenta: '0xa9a1e1'
-  #  cyan:    '0x46d9ff'
-  #  white:   '0xdfdfdf'
+    cursor:
+      text: '#011627'
+      cursor: '#d6deeb'
 
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  #dim:
-  #  black:   '0x000000'
-  #  red:     '0x8c3336'
-  #  green:   '0x7a8530'
-  #  yellow:  '0x97822e'
-  #  blue:    '0x506d8f'
-  #  magenta: '0x80638e'
-  #  cyan:    '0x497e7a'
-  #  white:   '0x9a9a9a'
+    selection:
+      background: '#1b90dd'
 
-  # Indexed Colors
-  #
-  # The indexed colors include all colors from 16 to 256.
-  # When these are not set, they're filled with sensible defaults.
-  #
-  # Example:
-  #   `- { index: 16, color: '0xff00ff' }`
-  #
-  #indexed_colors: []
+    # Normal colors
+    normal:
+      black:   '#011627'
+      red:     '#ef5350'
+      green:   '#22da6e'
+      yellow:  '#c5e478'
+      blue:    '#82aaff'
+      magenta: '#c792ea'
+      cyan:    '#21c7a8'
+      white:   '#ffffff'
+
+    # Bright colors
+    bright:
+      black:   '#575656'
+      red:     '#ef5350'
+      green:   '#22da6e'
+      yellow:  '#ffeb95'
+      blue:    '#82aaff'
+      magenta: '#c792ea'
+      cyan:    '#7fdbca'
+      white:   '#ffffff'
+
+  # Colors (Solarized Dark)
+  solarized-dark: &solarized-dark
+    # Default colors
+    primary:
+      background: '#002b36' # base03
+      foreground: '#839496' # base0
+
+    # Cursor colors
+    cursor:
+      text:   '#002b36' # base03
+      cursor: '#839496' # base0
+
+    # Normal colors
+    normal:
+      black:   '#073642' # base02
+      red:     '#dc322f' # red
+      green:   '#859900' # green
+      yellow:  '#b58900' # yellow
+      blue:    '#268bd2' # blue
+      magenta: '#d33682' # magenta
+      cyan:    '#2aa198' # cyan
+      white:   '#eee8d5' # base2
+
+    # Bright colors
+    bright:
+      black:   '#002b36' # base03
+      red:     '#cb4b16' # orange
+      green:   '#586e75' # base01
+      yellow:  '#657b83' # base00
+      blue:    '#839496' # base0
+      magenta: '#6c71c4' # violet
+      cyan:    '#93a1a1' # base1
+      white:   '#fdf6e3' # base3
+  
+  # Colors (Material Theme)
+  material_theme: &material_theme
+    primary:
+      background: '#263238'
+      foreground: '#eeffff'
+
+    # Normal colors
+    normal:
+      black:   '#000000'  # Arbitrary
+      red:     '#e53935'
+      green:   '#91b859'
+      yellow:  '#ffb62c'
+      blue:    '#6182b8'
+      magenta: '#ff5370'  # Dark pink of the original material theme
+      cyan:    '#39adb5'
+      white:   '#a0a0a0'  # Arbitrary
+
+    # Bright colors
+    bright:
+      black:   '#4e4e4e'  # Arbitrary
+      red:     '#ff5370'
+      green:   '#c3e88d'
+      yellow:  '#ffcb6b'
+      blue:    '#82aaff'
+      magenta: '#f07178'  # Pink of the original material theme
+      cyan:    '#89ddff'
+      white:   '#ffffff'  # Arbitrary
+
+  # Colors (Blood Moon)
+  blood_moon: &blood_moon
+    primary:
+      background: '#10100E'
+      foreground: '#C6C6C4'
+
+    # Normal colors
+    normal:
+      black:   '#10100E'
+      red:     '#C40233'
+      green:   '#009F6B'
+      yellow:  '#FFD700'
+      blue:    '#0087BD'
+      magenta: '#9A4EAE'
+      cyan:    '#20B2AA'
+      white:   '#C6C6C4'
+
+    # Bright colors
+    bright:
+      black:   '#696969'
+      red:     '#FF2400'
+      green:   '#03C03C'
+      yellow:  '#FDFF00'
+      blue:    '#007FFF'
+      magenta: '#FF1493'
+      cyan:    '#00CCCC'
+      white:   '#FFFAFA'
+
+# Choose ONE color scheme from those available in the above list.
+colors: *blood_moon
 
 # Visual Bell
 #
@@ -357,7 +696,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: .8
+background_opacity: .95
 # background_opacity: 0.80
 
 #selection:
@@ -383,7 +722,7 @@ background_opacity: .8
   #unfocused_hollow: true
 
 # Live config reload (changes require restart)
-#live_config_reload: true
+live_config_reload: true
 
 # Shell
 #
@@ -395,7 +734,7 @@ background_opacity: .8
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /bin/bash
+  program: /bin/zsh
   args:
     - -l
     - -c
@@ -609,8 +948,8 @@ key_bindings:
   - { key: Equals,   mods: Control,       action: IncreaseFontSize }
   - { key: Plus,     mods: Control,       action: IncreaseFontSize }
   - { key: Minus,    mods: Control,       action: DecreaseFontSize }
-  - { key: Minus,    mods: Control,       action: DecreaseFontSize }
-
+  - { key: Minus,    mods: Control,       action: DecreaseFontSize            }
+  - { key: F11,       mods: None,          action: ToggleFullscreen           }
   - { key: Paste,                    action: Paste                            }
   - { key: Copy,                     action: Copy                             }
   - { key: L,         mods: Control, action: ClearLogNotice                   }
